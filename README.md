@@ -57,7 +57,7 @@ pip install quantum-forge
 Or install from source:
 
 ```bash
-git clone https://github.com/yourusername/quantum-forge.git
+git clone https://github.com/fridayowl/quantum-forge.git
 cd quantum-forge
 pip install -e .
 ```
@@ -236,8 +236,8 @@ Built with support from the quantum computing community and inspired by:
 
 ## 📧 Contact
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/quantum-forge/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/quantum-forge/discussions)
+- **Issues**: [GitHub Issues](https://github.com/fridayowl/quantum-forge/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/fridayowl/quantum-forge/discussions)
 
 ---
 
