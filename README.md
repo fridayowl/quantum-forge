@@ -28,12 +28,12 @@
 - Quantum state visualization
 
 ### 4. **Quantum Algorithm Library**
-- Variational Quantum Eigensolver (VQE) with advanced optimizers
-- Quantum Approximate Optimization Algorithm (QAOA)
-- Grover's search with amplitude amplification
-- Quantum Fourier Transform utilities
-- Shor's algorithm components
-- Quantum Phase Estimation
+- Variational Quantum Eigensolver (VQE) with advanced optimizers ✅
+- Quantum Approximate Optimization Algorithm (QAOA) ✅
+- **Grover's Search Algorithm** - Quadratic speedup for unstructured search ✅
+- **Quantum Phase Estimation (QPE)** - Eigenvalue estimation ✅
+- **Shor's Factoring Algorithm** - Exponential speedup for integer factorization ✅
+- Quantum Fourier Transform (QFT) ✅
 
 ### 5. **Noise Modeling & Simulation**
 - Realistic noise channel simulation
@@ -62,7 +62,27 @@ cd quantum-forge
 pip install -e .
 ```
 
+## 🌐 Interactive Web Demo
+
+Try QuantumForge algorithms directly in your browser with our **interactive web demo**!
+
+```bash
+cd web-demo
+python -m http.server 8000
+# Open http://localhost:8000
+```
+
+**Features:**
+- 🔍 **Grover's Search** - Interactive search with real-time probability visualization
+- ⚡ **Circuit Optimizer** - Visual before/after circuit comparison
+- 🔗 **QAOA Max-Cut** - Graph visualization with partition highlighting
+- 🧪 **VQE Simulator** - Energy convergence plots for molecular systems
+- 🌀 **State Analyzer** - Entanglement and purity measurements
+
+[View Web Demo Documentation](web-demo/README.md)
+
 ## 📖 Quick Start
+
 
 ### Circuit Optimization
 

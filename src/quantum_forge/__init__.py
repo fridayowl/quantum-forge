@@ -16,6 +16,9 @@ from .state_analyzer import QuantumStateAnalyzer
 from .vqe import VQESolver
 from .qaoa import QAOASolver
 from .noise_models import NoiseModelBuilder
+from .grover import GroverSearch
+from .qpe import QuantumPhaseEstimation
+from .shor import ShorFactoring
 
 __all__ = [
     "CircuitOptimizer",
@@ -24,4 +27,7 @@ __all__ = [
     "VQESolver",
     "QAOASolver",
     "NoiseModelBuilder",
+    "GroverSearch",
+    "QuantumPhaseEstimation",
+    "ShorFactoring",
 ]

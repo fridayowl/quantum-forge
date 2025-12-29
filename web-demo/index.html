@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumForge - Interactive Quantum Computing Demo</title>
+    <meta name="description" content="Interactive demonstrations of quantum algorithms including Grover's Search, VQE, QAOA, and circuit optimization">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="quantum-bg"></div>
+        <div class="container">
+            <div class="logo">
+                <span class="quantum-icon">⚛️</span>
+                <h1>QuantumForge</h1>
+            </div>
+            <p class="tagline">Interactive Quantum Computing Playground</p>
+            <p class="subtitle">Explore quantum algorithms with real-time visualizations</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <button class="nav-btn active" data-demo="grover">Grover's Search</button>
+            <button class="nav-btn" data-demo="circuit">Circuit Optimizer</button>
+            <button class="nav-btn" data-demo="qaoa">QAOA Max-Cut</button>
+            <button class="nav-btn" data-demo="vqe">VQE Simulator</button>
+            <button class="nav-btn" data-demo="state">State Analyzer</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Grover's Search Demo -->
+        <section id="grover-demo" class="demo-section active">
+            <div class="demo-header">
+                <h2>🔍 Grover's Search Algorithm</h2>
+                <p>Find marked items in an unsorted database with quadratic speedup</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="control-panel">
+                    <h3>Configuration</h3>
+                    
+                    <div class="control-group">
+                        <label for="grover-qubits">Number of Qubits (Search Space: <span id="search-space">8</span> items)</label>
+                        <input type="range" id="grover-qubits" min="2" max="5" value="3" step="1">
+                        <span class="value-display">3</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="marked-state">Marked State (Binary)</label>
+                        <input type="text" id="marked-state" value="101" placeholder="e.g., 101">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="grover-iterations">Iterations</label>
+                        <input type="range" id="grover-iterations" min="1" max="10" value="2" step="1">
+                        <span class="value-display">2</span>
+                        <span class="optimal-label">Optimal: <span id="optimal-iter">2</span></span>
+                    </div>
+
+                    <button class="run-btn" id="run-grover">🚀 Run Search</button>
+
+                    <div class="stats-panel">
+                        <h4>Statistics</h4>
+                        <div class="stat-item">
+                            <span>Success Probability:</span>
+                            <span id="grover-success" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Speedup vs Classical:</span>
+                            <span id="grover-speedup" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-panel">
+                    <h3>Probability Distribution</h3>
+                    <canvas id="grover-chart" width="600" height="400"></canvas>
+                    
+                    <div class="results-table">
+                        <h4>Top Results</h4>
+                        <table id="grover-results">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>State</th>
+                                    <th>Probability</th>
+                                    <th>Marked</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="4">Run the algorithm to see results</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Circuit Optimizer Demo -->
+        <section id="circuit-demo" class="demo-section">
+            <div class="demo-header">
+                <h2>⚡ Circuit Optimizer</h2>
+                <p>Optimize quantum circuits for reduced depth and gate count</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="control-panel">
+                    <h3>Circuit Configuration</h3>
+                    
+                    <div class="control-group">
+                        <label for="circuit-qubits">Number of Qubits</label>
+                        <input type="range" id="circuit-qubits" min="2" max="5" value="3" step="1">
+                        <span class="value-display">3</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="circuit-depth">Initial Depth</label>
+                        <input type="range" id="circuit-depth" min="5" max="20" value="10" step="1">
+                        <span class="value-display">10</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="opt-level">Optimization Level</label>
+                        <select id="opt-level">
+                            <option value="0">0 - No optimization</option>
+                            <option value="1">1 - Basic</option>
+                            <option value="2" selected>2 - Standard</option>
+                            <option value="3">3 - Aggressive</option>
+                        </select>
+                    </div>
+
+                    <button class="run-btn" id="run-optimizer">⚡ Optimize Circuit</button>
+
+                    <div class="stats-panel">
+                        <h4>Optimization Results</h4>
+                        <div class="stat-item">
+                            <span>Depth Reduction:</span>
+                            <span id="depth-reduction" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Gate Count Reduction:</span>
+                            <span id="gate-reduction" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Fidelity Improvement:</span>
+                            <span id="fidelity-improvement" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-panel">
+                    <h3>Circuit Comparison</h3>
+                    <div class="circuit-display">
+                        <div class="circuit-box">
+                            <h4>Original Circuit</h4>
+                            <div id="original-circuit" class="circuit-viz">
+                                <div class="circuit-metrics">
+                                    <span>Depth: <strong id="orig-depth">-</strong></span>
+                                    <span>Gates: <strong id="orig-gates">-</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="circuit-box">
+                            <h4>Optimized Circuit</h4>
+                            <div id="optimized-circuit" class="circuit-viz">
+                                <div class="circuit-metrics">
+                                    <span>Depth: <strong id="opt-depth">-</strong></span>
+                                    <span>Gates: <strong id="opt-gates">-</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="optimization-chart" width="600" height="300"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- QAOA Demo -->
+        <section id="qaoa-demo" class="demo-section">
+            <div class="demo-header">
+                <h2>🔗 QAOA Max-Cut Solver</h2>
+                <p>Solve graph optimization problems with quantum approximate optimization</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="control-panel">
+                    <h3>Graph Configuration</h3>
+                    
+                    <div class="control-group">
+                        <label for="graph-nodes">Number of Nodes</label>
+                        <input type="range" id="graph-nodes" min="3" max="6" value="4" step="1">
+                        <span class="value-display">4</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="qaoa-layers">QAOA Layers (p)</label>
+                        <input type="range" id="qaoa-layers" min="1" max="5" value="2" step="1">
+                        <span class="value-display">2</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Graph Type</label>
+                        <select id="graph-type">
+                            <option value="cycle">Cycle</option>
+                            <option value="complete">Complete</option>
+                            <option value="random">Random</option>
+                        </select>
+                    </div>
+
+                    <button class="run-btn" id="run-qaoa">🔗 Solve Max-Cut</button>
+
+                    <div class="stats-panel">
+                        <h4>Results</h4>
+                        <div class="stat-item">
+                            <span>Max Cut Value:</span>
+                            <span id="cut-value" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Approximation Ratio:</span>
+                            <span id="approx-ratio" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Partition:</span>
+                            <span id="partition" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-panel">
+                    <h3>Graph Visualization</h3>
+                    <canvas id="graph-canvas" width="600" height="400"></canvas>
+                    <div class="legend">
+                        <span class="legend-item"><span class="color-box red"></span> Set A</span>
+                        <span class="legend-item"><span class="color-box blue"></span> Set B</span>
+                        <span class="legend-item"><span class="edge-cut"></span> Cut Edge</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VQE Demo -->
+        <section id="vqe-demo" class="demo-section">
+            <div class="demo-header">
+                <h2>🧪 VQE Simulator</h2>
+                <p>Find ground state energies using variational quantum eigensolver</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="control-panel">
+                    <h3>Hamiltonian Setup</h3>
+                    
+                    <div class="control-group">
+                        <label>Molecule</label>
+                        <select id="molecule">
+                            <option value="h2">H₂ (Hydrogen)</option>
+                            <option value="lih">LiH (Lithium Hydride)</option>
+                            <option value="custom">Custom 2-qubit</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="ansatz-type">Ansatz</label>
+                        <select id="ansatz-type">
+                            <option value="hardware">Hardware Efficient</option>
+                            <option value="uccsd">UCCSD</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="vqe-iterations">Max Iterations</label>
+                        <input type="range" id="vqe-iterations" min="10" max="100" value="50" step="10">
+                        <span class="value-display">50</span>
+                    </div>
+
+                    <button class="run-btn" id="run-vqe">🧪 Run VQE</button>
+
+                    <div class="stats-panel">
+                        <h4>Results</h4>
+                        <div class="stat-item">
+                            <span>Ground Energy:</span>
+                            <span id="vqe-energy" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Exact Energy:</span>
+                            <span id="exact-energy" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Error:</span>
+                            <span id="vqe-error" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-panel">
+                    <h3>Energy Convergence</h3>
+                    <canvas id="vqe-chart" width="600" height="400"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- State Analyzer Demo -->
+        <section id="state-demo" class="demo-section">
+            <div class="demo-header">
+                <h2>🌀 Quantum State Analyzer</h2>
+                <p>Analyze entanglement, purity, and other quantum state properties</p>
+            </div>
+
+            <div class="demo-grid">
+                <div class="control-panel">
+                    <h3>State Configuration</h3>
+                    
+                    <div class="control-group">
+                        <label>Preset States</label>
+                        <select id="preset-state">
+                            <option value="bell">Bell State |Φ+⟩</option>
+                            <option value="ghz">GHZ State</option>
+                            <option value="w">W State</option>
+                            <option value="product">Product State</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group" id="custom-state-group" style="display: none;">
+                        <label>State Vector (JSON)</label>
+                        <textarea id="custom-state" rows="4" placeholder='[1, 0, 0, 1]'></textarea>
+                    </div>
+
+                    <button class="run-btn" id="analyze-state">🌀 Analyze State</button>
+
+                    <div class="stats-panel">
+                        <h4>State Properties</h4>
+                        <div class="stat-item">
+                            <span>Purity:</span>
+                            <span id="state-purity" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Entanglement Entropy:</span>
+                            <span id="state-entropy" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Concurrence:</span>
+                            <span id="state-concurrence" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visualization-panel">
+                    <h3>State Visualization</h3>
+                    <canvas id="state-chart" width="600" height="400"></canvas>
+                    <div class="bloch-sphere" id="bloch-sphere">
+                        <!-- Bloch sphere visualization -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>⚛️ QuantumForge - Open Source Quantum Computing Library</p>
+            <p>
+                <a href="https://github.com/fridayowl/quantum-forge" target="_blank">GitHub</a> |
+                <a href="https://github.com/fridayowl/quantum-forge#readme" target="_blank">Documentation</a> |
+                <a href="https://github.com/fridayowl/quantum-forge/blob/master/LICENSE" target="_blank">MIT License</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="quantum-sim.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
