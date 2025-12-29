@@ -35,18 +35,33 @@
 - **Shor's Factoring Algorithm** - Exponential speedup for integer factorization ✅
 - Quantum Fourier Transform (QFT) ✅
 
-### 5. **Noise Modeling & Simulation**
+### 5. **Quantum Chemistry** ✨ NEW!
+- **7 Molecular Hamiltonians**: H₂, LiH, H₂O, BeH₂, NH₃, CH₄, N₂
+- Bond length customization
+- Exact ground state calculations
+- Molecular information database
+
+### 6. **Quantum Error Correction** ✨ NEW!
+- **Bit-Flip Code** - 3-qubit protection against X errors
+- **Phase-Flip Code** - 3-qubit protection against Z errors
+- **Shor Code** - 9-qubit protection against arbitrary errors
+- **Steane Code** - 7-qubit CSS code
+- **Surface Code** - Topological code with high threshold
+- Syndrome measurement and error correction
+
+### 7. **Quantum Machine Learning** ✨ NEW!
+- **Quantum Kernels** - Kernel-based ML with quantum feature maps
+- **Variational Quantum Classifier (VQC)** - Parameterized classification
+- **Quantum Neural Networks (QNN)** - Layered quantum circuits
+- **Quantum Boltzmann Machine (QBM)** - Quantum generative models
+- Parameter-shift rule for gradients
+
+### 8. **Noise Modeling & Simulation**
 - Realistic noise channel simulation
 - Custom noise model creation
 - Decoherence modeling (T1, T2)
 - Gate error characterization
 - Crosstalk simulation
-
-### 6. **Quantum Machine Learning Tools**
-- Quantum kernel methods
-- Variational quantum classifiers
-- Quantum feature maps
-- Quantum neural network layers
 
 ## 🚀 Installation
 
@@ -64,8 +79,11 @@ pip install -e .
 
 ## 🌐 Interactive Web Demo
 
+**🎉 Live Demo**: [https://fridayowl.github.io/quantum-forge](https://fridayowl.github.io/quantum-forge)
+
 Try QuantumForge algorithms directly in your browser with our **interactive web demo**!
 
+**Run Locally:**
 ```bash
 cd web-demo
 python -m http.server 8000
@@ -76,7 +94,7 @@ python -m http.server 8000
 - 🔍 **Grover's Search** - Interactive search with real-time probability visualization
 - ⚡ **Circuit Optimizer** - Visual before/after circuit comparison
 - 🔗 **QAOA Max-Cut** - Graph visualization with partition highlighting
-- 🧪 **VQE Simulator** - Energy convergence plots for molecular systems
+- 🧪 **VQE Simulator** - Energy convergence plots for **7 molecules** ✨
 - 🌀 **State Analyzer** - Entanglement and purity measurements
 
 [View Web Demo Documentation](web-demo/README.md)

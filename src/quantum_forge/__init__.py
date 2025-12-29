@@ -19,6 +19,22 @@ from .noise_models import NoiseModelBuilder
 from .grover import GroverSearch
 from .qpe import QuantumPhaseEstimation
 from .shor import ShorFactoring
+from .chemistry import MolecularHamiltonian
+from .qec import (
+    BitFlipCode,
+    PhaseFlipCode,
+    ShorCode,
+    SteaneCode,
+    SurfaceCode,
+    get_qec_code
+)
+from .qml import (
+    QuantumKernel,
+    VariationalQuantumClassifier,
+    QuantumNeuralNetwork,
+    QuantumBoltzmannMachine,
+    create_qml_model
+)
 
 __all__ = [
     "CircuitOptimizer",
@@ -30,4 +46,16 @@ __all__ = [
     "GroverSearch",
     "QuantumPhaseEstimation",
     "ShorFactoring",
+    "MolecularHamiltonian",
+    "BitFlipCode",
+    "PhaseFlipCode",
+    "ShorCode",
+    "SteaneCode",
+    "SurfaceCode",
+    "get_qec_code",
+    "QuantumKernel",
+    "VariationalQuantumClassifier",
+    "QuantumNeuralNetwork",
+    "QuantumBoltzmannMachine",
+    "create_qml_model",
 ]
