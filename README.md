@@ -80,6 +80,7 @@ pip install -e .
 ## 🌐 Interactive Web Demo
 
 **🎉 Live Demo**: [https://fridayowl.github.io/quantum-forge](https://fridayowl.github.io/quantum-forge)
+> **Note**: First time? See [GitHub Pages Setup Guide](GITHUB_PAGES_SETUP.md) to enable the live demo.
 
 Try QuantumForge algorithms directly in your browser with our **interactive web demo**!
 
